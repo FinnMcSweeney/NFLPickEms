@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: crimson;
+    height: 60px;
+  }
+  
+  .nav-tabs a {
+    font-size: 20px;
+    margin-right: 30px;
+    color: #FFFDD0;
+    text-decoration: none;
+  }
+  
+  .nav-tabs a:hover {
+    background-color: #FFFDD0;
+    color: crimson;
+    padding: 10px 20px;
+  }
+  
+  .nav-login a {
+    font-size: 20px;
+    color: #FFFDD0;
+    text-decoration: none;
+  }
+  
+  .nav-login a:hover {
+    background-color: #FFFDD0;
+    color: crimson;
+    padding: 10px 20px;
+  }
+
+  body{
+    background-color: #FFFDD0;
+  }
+
+  form {
+    padding: 20px;
+}
+.choice-group {
+    border: 1px solid lightgray;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.choice {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+input[type="radio"] {
+    font-size: 20px;
+    margin-right: 10px;
+}
+input[type="submit"] {
+    padding: 20px;
+    font-size: 20px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-out;
+}
+input[type="submit"]:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+  </style>
+</head>
+  <body>
+    <div id="navbar">
+      <div class="nav-tabs">
+        <a href="#home">Home</a>
+        <a href="{{ url_for('recap', username=username) }}">Recap</a>
+        <a href="#statistics">Statistics</a>
+      </div>
+      <div class="nav-login">
+        {% if 'username' in session %}
+            <a href="#">{{ session['username'] }}</a>
+        {% else %}
+            <a href="login">Login</a>
+        {% endif %}
+    </div>
+    </div>
+    <div class="content">
+      <!-- Add the content for the home page here -->
+      <h1><center>NFL Pick Ems</center></h1>
+    </div>
+
+
+  </body>
+</html>

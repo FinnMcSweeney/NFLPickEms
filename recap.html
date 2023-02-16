@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: crimson;
+    height: 60px;
+  }
+  
+  .nav-tabs a {
+    font-size: 20px;
+    margin-right: 30px;
+    color: #FFFDD0;
+    text-decoration: none;
+  }
+  
+  .nav-tabs a:hover {
+    background-color: #FFFDD0;
+    color: crimson;
+    padding: 10px 20px;
+  }
+  
+  .nav-login a {
+    font-size: 20px;
+    color: #FFFDD0;
+    text-decoration: none;
+  }
+  
+  .nav-login a:hover {
+    background-color: #FFFDD0;
+    color: crimson;
+    padding: 10px 20px;
+  }
+
+  body{
+    background-color: #FFFDD0;
+  }
+  .sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: crimson;
+  padding: 20px;
+  position: fixed;
+  left: 7px;
+  top: 107px;
+  color: #FFFDD0;
+}
+
+  /* Add styling to the sidebar options */
+  .sidebar-option {
+    padding: 10px;
+    border-bottom: 1px #FFFDD0;
+    text-align: center;
+  }
+
+  /* Add hover effect to the sidebar options */
+  .sidebar-option:hover {
+    background-color: #FFFDD0;
+    color: crimson;
+    padding: 10px 20px;;
+  }
+  .recap-content {
+position: relative;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  border-radius: 3px;
+}
+  .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+  }
+
+  </style>
+</head>
+  <body>
+    <div id="navbar">
+      <div class="nav-tabs">
+        <a href="{{ url_for('home', username=username) }}">Home</a>
+        <a href="{{ url_for('recap') }}">Recap</a>
+        <a href="#statistics">Statistics</a>
+      </div>
+      <div class="nav-login">
+        {% if 'username' in session %}
+            <a href="#">{{ session['username'] }}</a>
+        {% else %}
+            <a href="login">Login</a>
+        {% endif %}
+    </div>
+    </div>
+    <div>
+      <!-- Add the content for the home page here -->
+      <h1><center>NFL Pick Ems: Recap</center></h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+          <!-- Add options to the sidebar -->
+          <div class="sidebar-option" id="wild-card-round">Wild Card Round</div>
+          <div class="sidebar-option" id="divisional-round">Divisional Round</div>
+          <div class="sidebar-option" id="conference-championship">Conference Championship</div>
+          <div class="sidebar-option" id="super-bowl">Super Bowl</div>
+        </div>
+        <div class="recap-content" id="recap-content">
+          <!-- Add the content for the home page here -->
+        </div>
+      </div>
+      
+      <!-- Add the JavaScript code here -->
+      <script>
+        document.querySelector('#wild-card-round').addEventListener('click', function () {
+          document.querySelector('#recap-content').innerHTML = '<pre>This is the content for the Wild Card Round</pre>';
+        });
+        document.querySelector('#divisional-round').addEventListener('click', function () {
+          document.querySelector('#recap-content').innerHTML = '<p>This is the content for the Divisional Round</p>';
+        });
+        document.querySelector('#conference-championship').addEventListener('click', function () {
+          document.querySelector('#recap-content').innerHTML = '<p>This is the content for the Conference Championship</p>';
+        });
+        document.querySelector('#super-bowl').addEventListener('click', function () {
+          document.querySelector('#recap-content').innerHTML = '<p>This is the content for the Super Bowl</p>';
+        });
+      </script>
+
+
+
+  </body>
+</html>
